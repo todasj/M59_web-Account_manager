@@ -12,7 +12,7 @@ function is_valid_email($email) {
 	
 function m59serv_opencon() {
 	$m59_server = 'server_ip'; //IP to Meridian 59 server
-	$m59_port = 'server_maintance_port'; //Maintance port to Meridian 59 server
+	$m59_port = 'server_maintance_port'; //Maintenance port to Meridian 59 server
 	$fp = fsockopen($m59_server, $m59_port);
 	return $fp;}
 	

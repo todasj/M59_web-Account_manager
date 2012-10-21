@@ -1,2 +1,50 @@
-Meridian 59 Account Manager website
+Account Manager website for Meridian 59 servers
+***************************************************************************
 
+GETTING STARTED
+==============================
+
+1.
+***
+Open your blakserv.cfg in your server folder and under [Socket] add these lines
+
+MaintenancePort		XXX
+MaintenanceMask		127.0.0.1
+
+You can use whatever port you want, just make sure you open the port in your firewall/router.
+The maintenancemask is the IP to the webserver running this script, this makes sure only scripts from that webserver can preform commands on your server.
+
+2.
+***
+Create database
+
+CREATE TABLE IF NOT EXISTS `m59_web` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Email` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `IP` varchar(50) NOT NULL,
+  `Built` varchar(1) NOT NULL,
+  `Activation` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0 ;
+
+3.
+***
+In the functions.php in the script add info to your database so the script can connect and add the info for your server
+
+$m59_server = '127.0.0.1'; <- This is the IP to your server
+$m59_port = 'XXX'; <- this should be the MaintenancePort you chosen to use in the blakserv.cfg
+
+4.
+***
+in .\blakserv\adminfn.c in the server source remove line 1750->1755
+to make the server only show account by their accountname when using 'show account XXX', otherwise it could cause problems if users are using only digits in their username like '1'
+
+==============================
+
+If you have done all correctly it should be working. You may want to add already existing account for example admin accounts manually in the database,
+to prevent users from trying to make accounts with the same username.
+
+If you have added the GetRealIntellect function from my PvP-fork of Meridian 59 you can uncomment line 27 in 'login.php' and comment line 28. I made this to avoid problems if users
+would decide to get soldier shields or god gifts to boost their intellect to gain more levels..

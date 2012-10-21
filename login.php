@@ -24,7 +24,8 @@ if(empty($error)) {
 		$charz = "";
 		for ($i = 4; $i <= count($char)-1; $i++) { $charz .= $char[$i] . ' '; }
 		$objectnum = $char[2];
-		$data = 'send object '. $objectnum . ' getrealintellect';
+		//$data = 'send object '. $objectnum . ' getrealintellect';
+		$data = 'send object '. $objectnum . ' getintellect';
 		$results = m59serv_senddata($m59,$data);
 		$pieces = explode(" ",$results[2]);
 		$intellect = $pieces[2];
