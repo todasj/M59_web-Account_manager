@@ -18,7 +18,7 @@ The maintenancemask is the IP to the webserver running this script, this makes s
 ***
 Create database
 
-CREATE TABLE IF NOT EXISTS `m59_web` (
+CREATE TABLE IF NOT EXISTS `m59_Web` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Email` varchar(100) NOT NULL,
   `Username` varchar(100) NOT NULL,
